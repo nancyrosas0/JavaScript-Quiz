@@ -1,7 +1,7 @@
 //var to keep track of 
 var time = 100;
 var currentQuestionIndex = 0;
-var timer;
+var timerWrapper;
 var score = 100;
 
 //vars for DOM elements
@@ -9,7 +9,7 @@ var introEl = document.querySelector(".intro");
 var feedbackEl = document.querySelector(".explain")
 var questionsEl = document.getElementById("questions");
 var startBtn = document.getElementById("start"); 
-var timerEl = document.getElementById("time");
+var timerWrapperEl = document.getElementById("time");
 var choicesEl = document.getElementById("choices");
 var submitBtn = document.getElementById("submit");
 var initialsEl = document.getElementById("initials");
@@ -27,18 +27,17 @@ function startQuiz() {
 //document.getElementById.removeAttribute("class");
 //this remove, REMOVES the class and pops up a NEW class! This will make a new div pop up behind it. 
     homeEl.classList.add("hide")
-    questionsEl.classList.remove("hide")    
-    timer = setInterval(clockTick, 1000)
-
-    timerEl.textContent = time;
-
+    questionsEl.classList.remove("hide")
+    //timerWrapperEl.classList.remove("hide")    
+    timerWrapper = setInterval(clockTick, 1000)
+    timerWrapperEl.textContent = time;
     getQuestion();
-}
+    }
 
 //this goes with LINE 3!
 function getQuestion(){
-    var currentQuestion = questions[currentQuestionIndex];
-    //var titleEl = document.getElementById("question-title");
+        var currentQuestion = questions[currentQuestionIndex];
+        //var titleEl = document.getElementById("question-title");
     titleEl.textContent = currentQuestion.title;
     choicesEl.textContent = "";
     currentQuestion.choices.forEach(function(choice){
@@ -58,12 +57,12 @@ function choiceClick(){
     var buttonValue = this.value
     if (buttonValue === correctAnswer){
         feedbackEl.textContent = "Correct!"
-        //no deductions on the timer and move forward
+        //no deductions on the timerWrapper and move forward
     }else {
         time = time-5;
         score = score-20;
         feedbackEl.textContent = "Incorrect"
-        //the timer deducts 5 secs and move forward
+        //the timerWrapper deducts 5 secs and move forward
     }
     feedbackEl.classList.remove("hide")
     setTimeout(function() {
@@ -84,7 +83,7 @@ function nextQuestion(){
 }
 
 function quizEnd() {
-    clearInterval(timer);
+    clearInterval(timerWrapper);
     endEl.classList.remove("hide")
     questionsEl.classList.add("hide")  
     var finalScoreEl = document.getElementById("final-score");
@@ -93,7 +92,7 @@ function quizEnd() {
 
 function clockTick(){
     time--; 
-    timerEl.textContent = time; 
+    timerWrapperEl.textContent = time; 
     if(time <= 0) {
         quizEnd();
     }
@@ -129,10 +128,10 @@ submitBtn.addEventListener("click", saveHighscore);
 highscoresBtn.addEventListener("click", viewHighscores);
 returnBtn.addEventListener("click", viewHome);
 
-//PUll out timer and view Highscores into a Navbar so they don't hide <nav>
+//PUll out timerWrapper and view Highscores into a Navbar so they don't hide <nav>
 //Style with css
 //use getitem local storage to put items into an array. Get what exists and put them into the highscores array []
 //**remember, nr should not have been replaced by tt 
 //view highscores page - need to get the item from local storage and use it to render their scores & initials on the page
 //need to fix the return home button
-//when return button is clicked, reset timer and score-- this may fix the return home button (check if the timer is causing this misfire)
+//when return button is clicked, reset timerWrapper and score-- this may fix the return home button (check if the timerWrapper is causing this misfire)

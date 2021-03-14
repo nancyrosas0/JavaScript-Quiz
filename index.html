@@ -7,14 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/style.css">
     <title>JavaScript Quiz</title>
+    <nav>
+        <!--Unordered list element-->
+        <ul>
+            <!--List item element-->
+            <li>
+                <!--anchor element-->
+                <button id="highscoresBtn">View Highscores</button>
+            </li>
+            <li>
+                <div class="timerwrapper">Time: <span id="time">0</span></div>
+            </li>
+        </ul>
+    </nav>
 </head>
 
 <body>
     <section id="landing-page">
-        <button id="highscoresBtn">View Highscores</button>
-        <header class="welcome">
+                <header class="welcome">
             <h1>JavaScript Quiz</h1>
-            <div class="timer hide">Time: <span id="time">0</span></div>
         </header>
         <div class="intro">
                 <p>
@@ -35,7 +46,7 @@
      <section id="end-screen" class="hide">
         <div>Your score is: <span id="final-score"></span></div>
          <p>Enter your initials here!</p>
-         <form>
+         <form id="user-data">
              <input type="text" id="initials" name="initials">
          </form>
          <button id="submit">Submit</button>

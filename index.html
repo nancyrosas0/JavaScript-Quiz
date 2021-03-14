@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel = "stylesheet" src = 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz</title>
+</head>
+
+<body>
+    <header class="welcome">
+        <h1>JavaScript Quiz</h1>
+        <div class="timer hide">Time: <span id="time">0</span></div>
+    </header>
+
+<section>
+    <div class="intro">
+        <!-- <div class="intro hide" class="start"> -->
+            
+            <p>
+                This is the JavaScript Quiz! &#9735; &#9760; &#9735;
+                Incorrect answers will lessen your time, so choose wisely.
+            </p>
+            <button id="start">Start Quiz</button>
+        </div>
+        <div class="scores"><a href="highscores.html">View Highscores</a></div>
+        
+     <div id="questions" class="test-class">
+         <div id="question-title"></div>
+         <div id="choices"></div>
+         <div id="end-screen"></div>
+         <div id="final-score"></div>
+     </div>
+     </div>
+     
+    </div>
+</section>
+
+
+<script src = "./assets/questions.js"></script>
+<script src = "assets/logic.js"></script>
+</body>
+</html>
